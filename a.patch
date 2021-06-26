@@ -1,0 +1,29 @@
+diff -Naur orig/com/vk/api/sdk/httpclient/HttpTransportClient.java nolog/com/vk/api/sdk/httpclient/HttpTransportClient.java
+--- orig/com/vk/api/sdk/httpclient/HttpTransportClient.java	2021-06-26 03:28:55.264000000 +0000
++++ nolog/com/vk/api/sdk/httpclient/HttpTransportClient.java	2021-06-26 03:29:43.458000000 +0000
+@@ -185,25 +185,6 @@
+     }
+ 
+     private void logRequest(HttpRequestBase request, Map requestHeaders, HttpResponse response, Map responseHeaders, String body, Long time) throws IOException {
+-        if (HttpTransportClient.LOG.isDebugEnabled()) {
+-            String payload = this.getRequestPayload(request);
+-            StringBuilder builder = (new StringBuilder("\n")).append("Request:\n").append("\t").append("Headers: ").append(requestHeaders != null ? requestHeaders : "-").append("\n").append("\t").append("Method: ").append(request.getMethod()).append("\n").append("\t").append("URI: ").append(request.getURI()).append("\n").append("\t").append("Payload: ").append(payload).append("\n").append("\t").append("Time: ").append(time != null ? time : "-").append("\n");
+-
+-            if (response != null) {
+-                builder.append("Response:\n").append("\t").append("Status: ").append(response.getStatusLine().toString()).append("\n").append("\t").append("Headers: ").append(responseHeaders != null ? responseHeaders : "-").append("\n").append("\t").append("Body: ").append(body != null ? body : "-").append("\n");
+-            }
+-
+-            HttpTransportClient.LOG.debug(builder.toString());
+-        } else if (HttpTransportClient.LOG.isInfoEnabled()) {
+-            StringBuilder builder = (new StringBuilder()).append("Request: ").append(request.getURI().toURL().toString());
+-
+-            if (time != null) {
+-                builder.append("\t\t").append(time);
+-            }
+-
+-            HttpTransportClient.LOG.info(builder.toString());
+-        }
+-
+     }
+ 
+     public ClientResponse get(String url) throws IOException {
