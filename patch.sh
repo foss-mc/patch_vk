@@ -26,7 +26,7 @@ cd "$decomp"
 patch -p1 --no-backup-if-mismatch < "$apatch"
 javac -cp "$jar" com/vk/api/sdk/httpclient/HttpTransportClient.java
 rm com/vk/api/sdk/httpclient/HttpTransportClient.java
-zip "$jar" com
+7z a "$jar" com
 
 cd "$userdir"
 mv "$jar" "$2"
